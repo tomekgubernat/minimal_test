@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { paramCase } from 'change-case';
 import { Link as RouterLink } from 'react-router-dom';
 // material
-import { Box, Card, Link, Typography, Stack } from '@material-ui/core';
-import { experimentalStyled as styled } from '@material-ui/core/styles';
+import { Box, Card, Link, Typography, Stack } from '@mui/material';
+import { styled } from '@mui/material/styles';
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
@@ -28,12 +28,12 @@ ShopProductCard.propTypes = {
   product: PropTypes.object
 };
 
-export default function ShopProductCard({ product, ...other }) {
+export default function ShopProductCard({ product }) {
   const { name, cover, price, colors, status, priceSale } = product;
   const linkTo = `${PATH_DASHBOARD.eCommerce.root}/product/${paramCase(name)}`;
 
   return (
-    <Card {...other}>
+    <Card>
       <Box sx={{ pt: '100%', position: 'relative' }}>
         {status && (
           <Label
@@ -42,6 +42,7 @@ export default function ShopProductCard({ product, ...other }) {
             sx={{
               top: 16,
               right: 16,
+              zIndex: 9,
               position: 'absolute',
               textTransform: 'uppercase'
             }}

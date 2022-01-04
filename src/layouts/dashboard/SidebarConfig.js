@@ -1,6 +1,7 @@
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // components
+import Label from '../../components/Label';
 import SvgIconStyle from '../../components/SvgIconStyle';
 
 // ----------------------------------------------------------------------
@@ -15,11 +16,13 @@ const ICONS = {
   chat: getIcon('ic_chat'),
   mail: getIcon('ic_mail'),
   user: getIcon('ic_user'),
+  kanban: getIcon('ic_kanban'),
+  banking: getIcon('ic_banking'),
   calendar: getIcon('ic_calendar'),
   ecommerce: getIcon('ic_ecommerce'),
   analytics: getIcon('ic_analytics'),
   dashboard: getIcon('ic_dashboard'),
-  kanban: getIcon('ic_kanban')
+  booking: getIcon('ic_booking')
 };
 
 const sidebarConfig = [
@@ -34,7 +37,9 @@ const sidebarConfig = [
         icon: ICONS.dashboard
       },
       { title: 'e-commerce', path: PATH_DASHBOARD.general.ecommerce, icon: ICONS.ecommerce },
-      { title: 'analytics', path: PATH_DASHBOARD.general.analytics, icon: ICONS.analytics }
+      { title: 'analytics', path: PATH_DASHBOARD.general.analytics, icon: ICONS.analytics },
+      { title: 'banking', path: PATH_DASHBOARD.general.banking, icon: ICONS.banking },
+      { title: 'booking', path: PATH_DASHBOARD.general.booking, icon: ICONS.booking }
     ]
   },
 
@@ -93,10 +98,19 @@ const sidebarConfig = [
   {
     subheader: 'app',
     items: [
-      { title: 'mail', path: PATH_DASHBOARD.mail.root, icon: ICONS.mail },
+      {
+        title: 'mail',
+        path: PATH_DASHBOARD.mail.root,
+        icon: ICONS.mail,
+        info: <Label color="error">2</Label>
+      },
       { title: 'chat', path: PATH_DASHBOARD.chat.root, icon: ICONS.chat },
       { title: 'calendar', path: PATH_DASHBOARD.calendar, icon: ICONS.calendar },
-      { title: 'kanban', path: PATH_DASHBOARD.kanban, icon: ICONS.kanban }
+      {
+        title: 'kanban',
+        path: PATH_DASHBOARD.kanban,
+        icon: ICONS.kanban
+      }
     ]
   }
 ];

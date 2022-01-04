@@ -3,8 +3,8 @@ import { Icon } from '@iconify/react';
 import { useFormik, Form, FormikProvider } from 'formik';
 import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 // material
-import { Grid, Button } from '@material-ui/core';
-import { LoadingButton } from '@material-ui/lab';
+import { Grid, Button } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
 // redux
 import { useDispatch, useSelector } from '../../../../redux/store';
 import { onGotoStep, onBackStep, onNextStep, applyShipping } from '../../../../redux/slices/product';
@@ -61,7 +61,7 @@ const CARDS_OPTIONS = [
 export default function CheckoutPayment() {
   const dispatch = useDispatch();
   const { checkout } = useSelector((state) => state.product);
-  const { total, billing, discount, subtotal, shipping } = checkout;
+  const { total, discount, subtotal, shipping } = checkout;
 
   const handleNextStep = () => {
     dispatch(onNextStep());
@@ -125,7 +125,7 @@ export default function CheckoutPayment() {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <CheckoutBillingInfo billing={billing} onBackStep={handleBackStep} />
+            <CheckoutBillingInfo onBackStep={handleBackStep} />
             <CheckoutSummary
               enableEdit
               total={total}

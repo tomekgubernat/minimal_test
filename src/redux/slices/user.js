@@ -140,6 +140,8 @@ export function getProfile() {
     dispatch(slice.actions.startLoading());
     try {
       const response = await axios.get('/api/user/profile');
+      console.log('getProfilegetProfilegetProfilegetProfilegetProfile-response', response.data);
+
       dispatch(slice.actions.getProfileSuccess(response.data.profile));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
@@ -251,7 +253,11 @@ export function getInvoices() {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('/api/user/account/invoices');
+      // console.log('getInvoicesgetInvoicesgetInvoicesgetInvoices');
+
+      const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+      console.log('getInvoicesgetInvoicesgetInvoicesgetInvoices', response.data);
+
       dispatch(slice.actions.getInvoicesSuccess(response.data.invoices));
     } catch (error) {
       dispatch(slice.actions.hasError(error));

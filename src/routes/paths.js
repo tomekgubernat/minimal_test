@@ -5,7 +5,6 @@ function path(root, sublink) {
 }
 
 const ROOTS_AUTH = '/auth';
-const ROOTS_DOCS = '/docs';
 const ROOTS_DASHBOARD = '/dashboard';
 
 // ----------------------------------------------------------------------
@@ -38,7 +37,9 @@ export const PATH_DASHBOARD = {
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),
     ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),
-    analytics: path(ROOTS_DASHBOARD, '/analytics')
+    analytics: path(ROOTS_DASHBOARD, '/analytics'),
+    banking: path(ROOTS_DASHBOARD, '/banking'),
+    booking: path(ROOTS_DASHBOARD, '/booking')
   },
   mail: {
     root: path(ROOTS_DASHBOARD, '/mail'),
@@ -57,7 +58,7 @@ export const PATH_DASHBOARD = {
     cards: path(ROOTS_DASHBOARD, '/user/cards'),
     list: path(ROOTS_DASHBOARD, '/user/list'),
     newUser: path(ROOTS_DASHBOARD, '/user/new'),
-    editById: path(ROOTS_DASHBOARD, '/user/ada-lindgren/edit'),
+    editById: path(ROOTS_DASHBOARD, `/user/reece-chung/edit`),
     account: path(ROOTS_DASHBOARD, '/user/account')
   },
   eCommerce: {
@@ -75,38 +76,9 @@ export const PATH_DASHBOARD = {
     root: path(ROOTS_DASHBOARD, '/blog'),
     posts: path(ROOTS_DASHBOARD, '/blog/posts'),
     post: path(ROOTS_DASHBOARD, '/blog/post/:title'),
-    postById: path(ROOTS_DASHBOARD, '/blog/post/portfolio-review-is-this-portfolio-too-creative'),
+    postById: path(ROOTS_DASHBOARD, '/blog/post/apply-these-7-secret-techniques-to-improve-event'),
     newPost: path(ROOTS_DASHBOARD, '/blog/new-post')
   }
 };
 
-export const PATH_DOCS = {
-  root: ROOTS_DOCS,
-  introduction: path(ROOTS_DOCS, '/introduction'),
-  quickstart: path(ROOTS_DOCS, '/quick-start'),
-  package: path(ROOTS_DOCS, '/package'),
-
-  // Theme UI
-  color: path(ROOTS_DOCS, '/color'),
-  typography: path(ROOTS_DOCS, '/typography'),
-  icon: path(ROOTS_DOCS, '/icon'),
-  shadows: path(ROOTS_DOCS, '/shadows'),
-  components: path(ROOTS_DOCS, '/components'),
-  settings: path(ROOTS_DOCS, '/settings'),
-  tips: path(ROOTS_DOCS, '/tips'),
-
-  // Development
-  routing: path(ROOTS_DOCS, '/routing'),
-  environmentVariables: path(ROOTS_DOCS, '/environment-variables'),
-  stateManagement: path(ROOTS_DOCS, '/state-management'),
-  apiCalls: path(ROOTS_DOCS, '/api-calls'),
-  analytics: path(ROOTS_DOCS, '/analytics'),
-  authentication: path(ROOTS_DOCS, '/authentication'),
-  multiLanguage: path(ROOTS_DOCS, '/multi-language'),
-  lazyload: path(ROOTS_DOCS, '/lazyload-image'),
-  formHelper: path(ROOTS_DOCS, '/form-helper'),
-
-  // Changelog
-  support: path(ROOTS_DOCS, '/support'),
-  changelog: path(ROOTS_DOCS, '/changelog')
-};
+export const PATH_DOCS = 'https://docs-minimals.vercel.app/introduction';

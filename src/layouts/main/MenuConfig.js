@@ -66,7 +66,7 @@ const menuConfig = [
   {
     title: 'Documentation',
     icon: <Icon icon={bookOpenFill} {...ICON_SIZE} />,
-    path: PATH_DOCS.root
+    path: PATH_DOCS
   }
 ];
 

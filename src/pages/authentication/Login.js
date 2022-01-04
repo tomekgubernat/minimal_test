@@ -1,7 +1,8 @@
+import { capitalCase } from 'change-case';
 import { Link as RouterLink } from 'react-router-dom';
 // material
-import { experimentalStyled as styled } from '@material-ui/core/styles';
-import { Box, Card, Stack, Link, Alert, Tooltip, Container, Typography, Button } from '@material-ui/core';
+import { styled } from '@mui/material/styles';
+import { Box, Card, Stack, Link, Alert, Tooltip, Container, Typography, Button } from '@mui/material';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // hooks
@@ -82,7 +83,7 @@ export default function Login() {
               <Typography sx={{ color: 'text.secondary' }}>Enter your details below.</Typography>
             </Box>
 
-            <Tooltip title={method}>
+            <Tooltip title={capitalCase(method)}>
               <Box component="img" src={`/static/auth/ic_${method}.png`} sx={{ width: 32, height: 32 }} />
             </Tooltip>
           </Stack>

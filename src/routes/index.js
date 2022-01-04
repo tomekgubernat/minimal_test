@@ -1,7 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Navigate, useRoutes, useLocation } from 'react-router-dom';
 // layouts
-import DocsLayout from '../layouts/docs';
 import MainLayout from '../layouts/main';
 import DashboardLayout from '../layouts/dashboard';
 import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
@@ -77,17 +76,17 @@ export default function Router() {
         </AuthGuard>
       ),
       children: [
-        { path: '/', element: <Navigate to="/dashboard/app" replace /> },
+        { element: <Navigate to="/dashboard/app" replace /> },
         { path: 'app', element: <GeneralApp /> },
         { path: 'ecommerce', element: <GeneralEcommerce /> },
-        {
-          path: 'analytics',
-          element: <GeneralAnalytics />
-        },
+        { path: 'analytics', element: <GeneralAnalytics /> },
+        { path: 'banking', element: <GeneralBanking /> },
+        { path: 'booking', element: <GeneralBooking /> },
+
         {
           path: 'e-commerce',
           children: [
-            { path: '/', element: <Navigate to="/dashboard/e-commerce/shop" replace /> },
+            { element: <Navigate to="/dashboard/e-commerce/shop" replace /> },
             { path: 'shop', element: <EcommerceShop /> },
             { path: 'product/:name', element: <EcommerceProductDetails /> },
             { path: 'list', element: <EcommerceProductList /> },
@@ -100,19 +99,19 @@ export default function Router() {
         {
           path: 'user',
           children: [
-            { path: '/', element: <Navigate to="/dashboard/user/profile" replace /> },
+            { element: <Navigate to="/dashboard/user/profile" replace /> },
             { path: 'profile', element: <UserProfile /> },
             { path: 'cards', element: <UserCards /> },
             { path: 'list', element: <UserList /> },
             { path: 'new', element: <UserCreate /> },
-            { path: '/:name/edit', element: <UserCreate /> },
+            { path: ':name/edit', element: <UserCreate /> },
             { path: 'account', element: <UserAccount /> }
           ]
         },
         {
           path: 'blog',
           children: [
-            { path: '/', element: <Navigate to="/dashboard/blog/posts" replace /> },
+            { element: <Navigate to="/dashboard/blog/posts" replace /> },
             { path: 'posts', element: <BlogPosts /> },
             { path: 'post/:title', element: <BlogPost /> },
             { path: 'new-post', element: <BlogNewPost /> }
@@ -121,7 +120,7 @@ export default function Router() {
         {
           path: 'mail',
           children: [
-            { path: '/', element: <Navigate to="/dashboard/mail/all" replace /> },
+            { element: <Navigate to="/dashboard/mail/all" replace /> },
             { path: 'label/:customLabel', element: <Mail /> },
             { path: 'label/:customLabel/:mailId', element: <Mail /> },
             { path: ':systemLabel', element: <Mail /> },
@@ -131,23 +130,13 @@ export default function Router() {
         {
           path: 'chat',
           children: [
-            { path: '/', element: <Chat /> },
+            { element: <Chat /> },
             { path: 'new', element: <Chat /> },
             { path: ':conversationKey', element: <Chat /> }
           ]
         },
-        { path: 'calendar', element: <Calendar /> }
-        // { path: 'kanban', element: <Kanban /> }
-      ]
-    },
-
-    // Docs Routes
-    {
-      path: 'docs',
-      element: <DocsLayout />,
-      children: [
-        { path: '/', element: <Navigate to="/docs/introduction" replace /> },
-        { path: '*', element: <Docs /> }
+        { path: 'calendar', element: <Calendar /> },
+        { path: 'kanban', element: <Kanban /> }
       ]
     },
 
@@ -169,14 +158,14 @@ export default function Router() {
       path: '/',
       element: <MainLayout />,
       children: [
-        { path: '/', element: <LandingPage /> },
+        { element: <LandingPage /> },
         { path: 'about-us', element: <About /> },
         { path: 'contact-us', element: <Contact /> },
         { path: 'faqs', element: <Faqs /> },
         {
           path: 'components',
           children: [
-            { path: '/', element: <ComponentsOverview /> },
+            { element: <ComponentsOverview /> },
             // FOUNDATIONS
             { path: 'color', element: <Color /> },
             { path: 'typography', element: <Typography /> },
@@ -214,6 +203,7 @@ export default function Router() {
             { path: 'tooltip', element: <Tooltip /> },
             { path: 'transfer-list', element: <TransferList /> },
             { path: 'tree-view', element: <TreeView /> },
+            { path: 'data-grid', element: <DataGrid /> },
             // EXTRA COMPONENTS
             { path: 'chart', element: <Charts /> },
             { path: 'map', element: <Map /> },
@@ -223,7 +213,8 @@ export default function Router() {
             { path: 'carousel', element: <Carousel /> },
             { path: 'multi-language', element: <MultiLanguage /> },
             { path: 'animate', element: <Animate /> },
-            { path: 'mega-menu', element: <MegaMenu /> }
+            { path: 'mega-menu', element: <MegaMenu /> },
+            { path: 'form-validation', element: <FormValidation /> }
           ]
         }
       ]
@@ -243,6 +234,8 @@ const VerifyCode = Loadable(lazy(() => import('../pages/authentication/VerifyCod
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));
 const GeneralEcommerce = Loadable(lazy(() => import('../pages/dashboard/GeneralEcommerce')));
 const GeneralAnalytics = Loadable(lazy(() => import('../pages/dashboard/GeneralAnalytics')));
+const GeneralBanking = Loadable(lazy(() => import('../pages/dashboard/GeneralBanking')));
+const GeneralBooking = Loadable(lazy(() => import('../pages/dashboard/GeneralBooking')));
 const EcommerceShop = Loadable(lazy(() => import('../pages/dashboard/EcommerceShop')));
 const EcommerceProductDetails = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductDetails')));
 const EcommerceProductList = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductList')));
@@ -260,9 +253,7 @@ const UserCreate = Loadable(lazy(() => import('../pages/dashboard/UserCreate')))
 const Chat = Loadable(lazy(() => import('../pages/dashboard/Chat')));
 const Mail = Loadable(lazy(() => import('../pages/dashboard/Mail')));
 const Calendar = Loadable(lazy(() => import('../pages/dashboard/Calendar')));
-// const Kanban = Loadable(lazy(() => import('../pages/dashboard/Kanban')));
-// Docs
-const Docs = Loadable(lazy(() => import('../pages/Docs')));
+const Kanban = Loadable(lazy(() => import('../pages/dashboard/Kanban')));
 // Main
 const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));
 const About = Loadable(lazy(() => import('../pages/About')));
@@ -276,7 +267,7 @@ const Page500 = Loadable(lazy(() => import('../pages/Page500')));
 const NotFound = Loadable(lazy(() => import('../pages/Page404')));
 // Components
 const ComponentsOverview = Loadable(lazy(() => import('../pages/ComponentsOverview')));
-const Color = Loadable(lazy(() => import('../pages/components-overview/foundations/FoundationColor')));
+const Color = Loadable(lazy(() => import('../pages/components-overview/foundations/FoundationColors')));
 const Typography = Loadable(lazy(() => import('../pages/components-overview/foundations/FoundationTypography')));
 const Shadows = Loadable(lazy(() => import('../pages/components-overview/foundations/FoundationShadows')));
 const Grid = Loadable(lazy(() => import('../pages/components-overview/foundations/FoundationGrid')));
@@ -311,6 +302,8 @@ const Timeline = Loadable(lazy(() => import('../pages/components-overview/materi
 const Tooltip = Loadable(lazy(() => import('../pages/components-overview/material-ui/Tooltip')));
 const TransferList = Loadable(lazy(() => import('../pages/components-overview/material-ui/transfer-list')));
 const TreeView = Loadable(lazy(() => import('../pages/components-overview/material-ui/TreeView')));
+const DataGrid = Loadable(lazy(() => import('../pages/components-overview/material-ui/data-grid')));
+//
 const Charts = Loadable(lazy(() => import('../pages/components-overview/extra/Charts')));
 const Map = Loadable(lazy(() => import('../pages/components-overview/extra/Map')));
 const Editor = Loadable(lazy(() => import('../pages/components-overview/extra/Editor')));
@@ -320,3 +313,4 @@ const Carousel = Loadable(lazy(() => import('../pages/components-overview/extra/
 const MultiLanguage = Loadable(lazy(() => import('../pages/components-overview/extra/MultiLanguage')));
 const Animate = Loadable(lazy(() => import('../pages/components-overview/extra/animate')));
 const MegaMenu = Loadable(lazy(() => import('../pages/components-overview/extra/MegaMenu')));
+const FormValidation = Loadable(lazy(() => import('../pages/components-overview/extra/form-validation')));

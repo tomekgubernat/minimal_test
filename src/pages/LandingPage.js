@@ -1,11 +1,13 @@
 // material
-import { experimentalStyled as styled } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 // components
 import Page from '../components/Page';
 import {
   LandingHero,
   LandingMinimal,
   LandingDarkMode,
+  LandingThemeColor,
+  LandingPricingPlans,
   LandingAdvertisement,
   LandingCleanInterfaces,
   LandingHugePackElements
@@ -33,7 +35,9 @@ export default function LandingPage() {
         <LandingMinimal />
         <LandingHugePackElements />
         <LandingDarkMode />
+        <LandingThemeColor />
         <LandingCleanInterfaces />
+        <LandingPricingPlans />
         <LandingAdvertisement />
       </ContentStyle>
     </RootStyle>

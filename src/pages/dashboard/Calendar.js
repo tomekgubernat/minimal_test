@@ -9,13 +9,15 @@ import { useSnackbar } from 'notistack';
 import plusFill from '@iconify/icons-eva/plus-fill';
 import { useState, useRef, useEffect } from 'react';
 // material
-import { useTheme } from '@material-ui/core/styles';
-import { Card, Button, Container, DialogTitle, useMediaQuery } from '@material-ui/core';
+import { useTheme } from '@mui/material/styles';
+import { Card, Button, Container, DialogTitle, useMediaQuery } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
 import { getEvents, openModal, closeModal, updateEvent, selectEvent, selectRange } from '../../redux/slices/calendar';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
+// hooks
+import useSettings from '../../hooks/useSettings';
 // components
 import Page from '../../components/Page';
 import { DialogAnimate } from '../../components/animate';
@@ -33,6 +35,7 @@ const selectedEventSelector = (state) => {
 };
 
 export default function Calendar() {
+  const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -148,7 +151,7 @@ export default function Calendar() {
 
   return (
     <Page title="Calendar | Minimal-UI">
-      <Container maxWidth="xl">
+      <Container maxWidth={themeStretch ? false : 'xl'}>
         <HeaderBreadcrumbs
           heading="Calendar"
           links={[{ name: 'Dashboard', href: PATH_DASHBOARD.root }, { name: 'Calendar' }]}

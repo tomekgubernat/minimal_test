@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import filePdfFilled from '@iconify/icons-ant-design/file-pdf-filled';
 import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 // material
-import { experimentalStyled as styled } from '@material-ui/core/styles';
-import { Box, Link, Button, Divider, Typography, Stack } from '@material-ui/core';
+import { styled } from '@mui/material/styles';
+import { Box, Link, Button, Divider, Typography, Stack } from '@mui/material';
 // redux
 import { useDispatch } from '../../../../redux/store';
 import { resetCart } from '../../../../redux/slices/product';
@@ -52,7 +52,7 @@ export default function CheckoutOrderComplete({ ...other }) {
             <Link href="#">01dc1370-3df6-11eb-b378-0242ac130002</Link>
           </Typography>
 
-          <Typography align="left" sx={{ color: 'text.secondary' }}>
+          <Typography align="left">
             We will send you a notification within 5 days when it ships.
             <br /> <br /> If you have any question or queries then fell to get in contact us. <br /> <br /> All the
             best,

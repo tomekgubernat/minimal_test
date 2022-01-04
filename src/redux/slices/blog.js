@@ -96,6 +96,7 @@ export function getPostsInitial(index, step) {
       });
       const results = response.data.results.length;
       const { maxLength } = response.data;
+      console.log('BLOGGG', response.data.results);
 
       dispatch(slice.actions.getPostsInitial(response.data.results));
 
@@ -120,7 +121,7 @@ export function getPost(title) {
       dispatch(slice.actions.getPostSuccess(response.data.post));
     } catch (error) {
       console.error(error);
-      dispatch(slice.actions.hasError());
+      dispatch(slice.actions.hasError(error));
     }
   };
 }
@@ -138,7 +139,7 @@ export function getRecentPosts(title) {
       dispatch(slice.actions.getRecentPostsSuccess(response.data.recentPosts));
     } catch (error) {
       console.error(error);
-      dispatch(slice.actions.hasError());
+      dispatch(slice.actions.hasError(error));
     }
   };
 }
